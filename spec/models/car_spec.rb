@@ -17,18 +17,23 @@ RSpec.describe Car, type: :model do
 
   describe 'filtering' do
     before(:each) do
-      @car1 = Car.create(
-        { make: 'Toyota', 
-          model: 'Prius', 
-          price: 20000 })
-      @car2 = Car.create(
-        { make: 'Ford', 
-          model: 'F-150', 
-          price: 19999 })
-      @car3 = Car.create(
-        { make: 'Abe', 
-          model: 'Lincoln', 
-          price:1900 })
+      @car1 = Car.create({ 
+        make: 'Toyota', 
+        model: 'Prius', 
+        price: 20000 
+      })
+
+      @car2 = Car.create({
+        make: 'Ford', 
+        model: 'F-150', 
+        price: 19999
+      })
+
+      @car3 = Car.create({
+        make: 'Abe', 
+        model: 'Lincoln', 
+        price:1900
+      })
     end
     
     it 'sorts by model ASC' do
@@ -38,9 +43,15 @@ RSpec.describe Car, type: :model do
     end
 
     it 'sorts by price ASC' do
+      cars = Car.by_price
+      expect(cars.first).to eq(@car3)
+      expect(cars.last).to eq(@car1)
     end
 
     it 'sorts by price DESC' do
+      cars = Car.by_price(:desc)
+      expect(cars.first).to eq(@car1)
+      expect(cars.last).to eq(@car3)
     end
   end
 
