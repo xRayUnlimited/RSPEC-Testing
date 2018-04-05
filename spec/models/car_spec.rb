@@ -55,4 +55,31 @@ RSpec.describe Car, type: :model do
     end
   end
 
+  describe 'behavior' do
+    before(:each) do
+      @attrs = {
+        make: 'Toyota', 
+        model: 'Tacoma',
+        color: 'green',
+        price: 20000
+      }
+
+      @car = Car.create(@attrs)
+    end
+
+    it 'can be painted' do
+      color = 'rainbow'
+      @car.paint(color)
+      expect(@car.color).to eq(color)
+    end
+
+    it 'honks' do
+      expect(@car.honk).to eq('BEEP BEEP')
+    end
+
+    it 'displays info' do
+      expect(@car.info).to eq(@attrs)
+    end
+  end
+
 end
