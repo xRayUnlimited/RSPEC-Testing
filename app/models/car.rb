@@ -10,10 +10,10 @@ class Car < ApplicationRecord
   end
 
   def paint
-    @car.color
+    @car.color(:color)
   end
 
-  def honk =
+  def honk 
     'BEEP BEEP'
   end
 
