@@ -9,8 +9,8 @@ class Car < ApplicationRecord
     order(price: direction)
   end
 
-  def paint
-    @car.color(:color)
+  def paint(color)
+    self.update(color: color)
   end
 
   def honk 
@@ -18,7 +18,7 @@ class Car < ApplicationRecord
   end
 
   def info
-    true
+    self.attributesg
   end
 
 end
